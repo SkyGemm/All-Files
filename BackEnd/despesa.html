@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Despesas</title>
+</head>
+<body>
+    <h1>Calculadora de Despesas</h1>
+    
+    <label for="salario">Salário:</label>
+    <input type="number" id="salario" name="salario" placeholder="Digite seu salário"><br><br>
+    
+    <label for="despesas1">Despesa 1:</label>
+    <input type="number" id="despesas1" name="despesas1" placeholder="Digite suas despesas"><br><br>
+    
+    <label for="despesas2">Despesa 2:</label>
+    <input type="number" id="despesas2" name="despesas2" placeholder="Digite suas despesas"><br><br>
+    
+    <label for="despesas3">Despesa 3:</label>
+    <input type="number" id="despesas3" name="despesas3" placeholder="Digite suas despesas"><br><br>
+
+    <button onclick="calcularDespesas()">Calcular Despesas</button>
+
+    <h2 id="resultado"></h2>
+
+    <script>
+        function calcularDespesas() {
+            var salario = parseFloat(document.getElementById('salario').value) || 0;
+            var despesas1 = parseFloat(document.getElementById('despesas1').value) || 0;
+            var despesas2 = parseFloat(document.getElementById('despesas2').value) || 0;
+            var despesas3 = parseFloat(document.getElementById('despesas3').value) || 0;
+
+            const totalDespesas = despesas1 + despesas2 + despesas3;
+            const saldoFinal = salario - totalDespesas;
+
+            // Percentual em relação ao total de despesas
+            const percTotal1 = totalDespesas > 0 ? (despesas1 / totalDespesas) * 100 : 0;
+            const percTotal2 = totalDespesas > 0 ? (despesas2 / totalDespesas) * 100 : 0;
+            const percTotal3 = totalDespesas > 0 ? (despesas3 / totalDespesas) * 100 : 0;
+            
+            // Percentual em relação ao salário
+            const percSalario1 = salario > 0 ? (despesas1 / salario) * 100 : 0;
+            const percSalario2 = salario > 0 ? (despesas2 / salario) * 100 : 0;
+            const percSalario3 = salario > 0 ? (despesas3 / salario) * 100 : 0;
+            const percTotalSalario = salario > 0 ? (totalDespesas / salario) * 100 : 0;
+
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = `
+                <strong>Resumo Financeiro:</strong><br>
+                Total de despesas: R$ ${totalDespesas.toFixed(2)} (${percTotalSalario.toFixed(2)}% do salário)<br>
+                Saldo final: R$ ${saldoFinal.toFixed(2)}<br><br>
+                
+                <strong>Percentual em relação ao total de despesas:</strong><br>
+                Despesa 1: ${percTotal1.toFixed(2)}%<br>
+                Despesa 2: ${percTotal2.toFixed(2)}%<br>
+                Despesa 3: ${percTotal3.toFixed(2)}%<br><br>
+                
+                <strong>Percentual em relação ao salário:</strong><br>
+                Despesa 1: ${percSalario1.toFixed(2)}%<br>
+                Despesa 2: ${percSalario2.toFixed(2)}%<br>
+                Despesa 3: ${percSalario3.toFixed(2)}%
+            `;
+        }
+    </script>
+</body>
+</html>
