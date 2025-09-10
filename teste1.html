@@ -64,6 +64,8 @@
     .btn-react1:hover { background: #059669; }
     .btn-react2 { background: #f59e0b; color: white; }
     .btn-react2:hover { background: #d97706; }
+    .btn-react3 { background: #ef4444; color: white; }
+    .btn-react3:hover { background: #b91c1c; }
     .folder { background: white; margin: 12px 0; padding: 12px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
     .folder h3 { margin: 0; font-size: 1.1rem; color: #4338ca; display: flex; align-items: center; cursor: pointer; }
     .folder h3 .arrow { display: inline-block; margin-right: 6px; transition: transform 0.3s ease; }
@@ -113,8 +115,10 @@
 
   <div class="list" id="filesList">
     <div class="top-buttons">
-      <a href="#" target="_blank" class="btn btn-react1">React 1</a>
-      <a href="#" target="_blank" class="btn btn-react2">React 2</a>
+      <a href="https://snack.expo.dev/@vini2126/hello" target="_blank" class="btn btn-react3">React Hello</a>
+      <a href="https://snack.expo.dev/@vini2126/lanchonete" target="_blank" class="btn btn-react1">React Lanchonete</a>
+      <a href="https://snack.expo.dev/@vini2126/fincaneiro" target="_blank" class="btn btn-react2">React Fincaneiro</a>
+      <a href="https://snack.expo.dev/@vini2126/conversor" target="_blank" class="btn btn-react3">React Conversor</a>
     </div>
   </div>
 
@@ -136,7 +140,6 @@
 
     async function loadTree() {
       statusEl.textContent = '⏳ Carregando lista de arquivos...';
-      // limpa arquivos, mas mantém os botões React
       filesList.querySelectorAll('ul, .folder').forEach(el => el.remove());
 
       filtersEl.innerHTML = '';
@@ -203,7 +206,6 @@
     }
 
     function renderAll(root) {
-      // mantém os botões React
       let topButtons = filesList.querySelector('.top-buttons');
       renderFolder(root, filesList, true);
       filesList.insertBefore(topButtons, filesList.firstChild);
